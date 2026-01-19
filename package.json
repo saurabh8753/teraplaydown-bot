@@ -1,7 +1,12 @@
-"name": "teraplaydown-bot",
+{
+  "name": "teraplaydown-bot",
   "version": "1.0.0",
   "description": "Terabox Play and Download Bot",
   "main": "api/index.js",
+  "scripts": {
+    "start": "node api/index.js"
+  },
   "dependencies": {
     "telegraf": "^4.12.2"
   }
+}
