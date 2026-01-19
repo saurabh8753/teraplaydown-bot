@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Teraplaydown - Redirecting</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background: #f0f2f5;
+        }
+        .btn-container { text-align: center; }
+        .download-btn {
+            background-color: #2481cc;
+            color: white;
+            padding: 18px 35px;
+            font-size: 20px;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            text-decoration: none;
+            font-weight: bold;
+            display: inline-block;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+            transition: transform 0.2s, background 0.3s;
+        }
+        .download-btn:active { transform: scale(0.95); }
+    </style>
+</head>
+<body>
+
+    <div class="btn-container">
+        <a href="#" id="actionBtn" class="download-btn">Go To Download Page</a>
+    </div>
+
+    <script>
+        // 1. URL se 'link' parameter nikalna
+        const urlParams = new URLSearchParams(window.location.search);
+        const userTeraboxLink = urlParams.get('link'); 
+
+        document.getElementById('actionBtn').addEventListener('click', function(e) {
+            e.preventDefault();
+
+            if (!userTeraboxLink) {
+                alert("Error: No Terabox link found!");
+                return;
+            }
+
+            // 2. Dynamic URL banana
+            var externalUrl = "https://videoplay-2ym.pages.dev/?url=" + userTeraboxLink;
+            
+            // 3. Ad Link
+            var telegramInternalUrl = "https://www.effectivegatecpm.com/hamfxc0cre?key=98b8b86d55734c2055e254a6a0e2c5d8";
+
+            // Android logic
+            if (navigator.userAgent.match(/Android/i)) {
+                var chromeIntent = "intent://" + externalUrl.replace(/^https?:\/\//, "") + "#Intent;scheme=https;package=com.android.chrome;end";
+                window.location.href = chromeIntent;
+                setTimeout(function() {
+                    window.location.href = telegramInternalUrl;
+                }, 800);
+            } else {
+                window.open(externalUrl, '_blank');
+                window.location.href = telegramInternalUrl;
+            }
+        });
+    </script>
+    
+</body>
+</html>
