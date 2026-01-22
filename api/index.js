@@ -31,7 +31,7 @@ async function saveUser(ctx) {
 
 bot.start(async (ctx) => {
   await saveUser(ctx);
-  ctx.reply("💌 Welcome!\nSend any Terabox link.");
+  ctx.reply("💌 Welcome to Desitera_bot\nSend any Terabox link.");
 });
 
 bot.on("text", async (ctx) => {
@@ -46,7 +46,7 @@ bot.on("text", async (ctx) => {
       const active = await db.collection("users").countDocuments({
         lastSeen: { $gte: new Date(Date.now() - 24 * 60 * 60 * 1000) }
       });
-      return ctx.reply(`📊 Users: ${total}\n⚡ Active (24h): ${active}`);
+      return ctx.reply(`📊bot stats\nTotal Users: ${total}\n⚡ Active (24h): ${active}`);
     }
 
     if (text.startsWith("/broadcast")) {
@@ -77,7 +77,7 @@ bot.on("text", async (ctx) => {
       encodeURIComponent(text);
 
     const msg = await ctx.reply(
-      "📥 File Ready!",
+      "📥 Aapki File Ready hai ⚡",
       Markup.inlineKeyboard([
         Markup.button.url("▶️ Play & Download", url)
       ])
